@@ -1,22 +1,22 @@
 export class User {
     firstname: string;
     surname: string;
-    username: string;
+    email: string;
 
-    constructor(firstname: string, surname: string, username: string) {
+    constructor(firstname: string, surname: string, email: string) {
         this.firstname = firstname
         this.surname = surname
-        this.username = username
+        this.email = email
     }
 }
 
 
 export class LoginUser {
-    username: string
+    email: string
     password: string
 
-    constructor(username: string, password: string) {
-        this.username = username
+    constructor(email: string, password: string) {
+        this.email = email
         this.password = password
     }
 }
