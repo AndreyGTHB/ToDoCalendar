@@ -34,7 +34,7 @@ export default class LoginForm extends React.Component<any, LoginFormState> {
         return (
             <div className={cssClasses.formContainer}>
                 <h2>Login</h2>
-                <form className={cssClasses.form} onSubmit={(e: FormEvent<HTMLFormElement>) => this.handleSubmit(e)}>
+                <form onSubmit={(e: FormEvent<HTMLFormElement>) => this.handleSubmit(e)}>
                     <label>
                         <strong>Email:</strong> <br />
                         <input
