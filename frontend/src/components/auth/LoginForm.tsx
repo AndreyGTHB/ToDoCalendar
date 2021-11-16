@@ -1,6 +1,7 @@
-import React, { ChangeEvent, FormEvent } from 'react'
+import React, { ChangeEvent, FormEvent, ReactNode } from 'react'
 import { LoginUser } from '../../models/auth/user'
 import FormComponent from "../UI/Form";
+import FormService from "../../services/FormService";
 
 interface LoginFormState {
     email: string,
@@ -18,11 +19,10 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
     }
 
     handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-        const name = event.target.name
-        const value = event.target.value
-        this.setState ({
+        const changed = FormService.processInputChange(event)
+        this.setState({
             ...this.state,
-            [name]: value
+            ...changed
         })
     }
     handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -30,7 +30,7 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
         console.log(new LoginUser(this.state.email, this.state.password))
     }
 
-    render() {
+    render(): ReactNode {
         return (
             <FormComponent onSubmit={(e: FormEvent<HTMLFormElement>) => this.handleSubmit(e)} header="Please sign in:">
                 <label>
