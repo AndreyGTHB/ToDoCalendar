@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent } from 'react'
-import { LoginUser } from '../../../models/auth/user'
-import cssClasses from './LoginForm.module.scss'
+import { LoginUser } from '../../models/auth/user'
+import cssClasses from './AuthForm.module.scss'
 
 interface LoginFormState {
     email: string,

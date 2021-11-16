@@ -1,6 +1,6 @@
 import './App.scss';
 import { Navigate, Route, Routes } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm/LoginForm";
+import LoginForm from "./components/auth/LoginForm";
 
 function App() {
     return (
