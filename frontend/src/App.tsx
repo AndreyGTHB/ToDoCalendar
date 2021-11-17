@@ -1,6 +1,7 @@
 import './App.scss';
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
+import RegisterForm from "./components/auth/RegisterForm";
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
             <Routes>
                 <Route path="/home" element={<h1>Home</h1>} />
                 <Route path="/login" element={<LoginForm />} />
+                <Route path="/register" element={<RegisterForm />} />
                 <Route path="/" element={<Navigate to="/home" />} />
             </Routes>
         </div>

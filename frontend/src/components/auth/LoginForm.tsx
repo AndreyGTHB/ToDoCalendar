@@ -4,18 +4,14 @@ import FormComponent from "../UI/Form";
 import FormService from "../../services/FormService";
 
 interface LoginFormState {
-    email: string,
+    username: string
     password: string
 }
 
 export default class LoginForm extends React.Component<{}, LoginFormState> {
-    constructor(props: {}) {
-        super(props);
-
-        this.state = {
-            email: "",
-            password: ""
-        }
+    state = {
+        username: "",
+        password: ""
     }
 
     handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -27,20 +23,19 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
     }
     handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        console.log(new LoginUser(this.state.email, this.state.password))
+        console.log(new LoginUser(this.state.username, this.state.password))
     }
 
     render(): ReactNode {
         return (
-            <FormComponent onSubmit={(e: FormEvent<HTMLFormElement>) => this.handleSubmit(e)} header="Please sign in:">
+            <FormComponent onSubmit={e => this.handleSubmit(e)} header="Please sign in:">
                 <label>
-                    <strong>Email:</strong> <br />
+                    <strong>Username:</strong> <br />
                     <input
-                        name="email"
-                        placeholder="Enter email"
-                        type="text"
-                        value={this.state.email}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => this.handleInputChange(e)} />
+                        name="username"
+                        placeholder="Enter username"
+                        value={this.state.username}
+                        onChange={e => this.handleInputChange(e)} />
                 </label>
                 <br />
                 <label>
@@ -50,7 +45,7 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
                         placeholder="Enter password"
                         type="password"
                         value={this.state.password}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => this.handleInputChange(e)} />
+                        onChange={e => this.handleInputChange(e)} />
                 </label>
                 <br />
                 <button>Login</button>
