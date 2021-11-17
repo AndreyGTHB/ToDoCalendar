@@ -19,6 +19,9 @@ $NORMAL_BUTTON_BG: #1a88d6;
         border-radius: 3px;
         box-sizing: border-box;
     }
+    input:hover, input:active, input:focus {
+        outline: none;
+    }
     button {
         background-color: $NORMAL_BUTTON_BG;
         color: white;

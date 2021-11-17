@@ -9,10 +9,11 @@ interface LoginFormState {
 }
 
 export default class LoginForm extends React.Component<{}, LoginFormState> {
-    state = {
+    private defaultState = {
         username: "",
         password: ""
     }
+    state = JSON.parse(JSON.stringify(this.defaultState))
 
     handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const changed = FormService.processInputChange(event)
@@ -23,21 +24,22 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
     }
     handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
+
         console.log(new LoginUser(this.state.username, this.state.password))
+        this.setState(JSON.parse(JSON.stringify(this.defaultState)))
     }
 
     render(): ReactNode {
         return (
             <FormComponent onSubmit={e => this.handleSubmit(e)} header="Please sign in:">
                 <label>
-                    <strong>Username:</strong> <br />
+                    <strong>Username:</strong>
                     <input
                         name="username"
                         placeholder="Enter username"
                         value={this.state.username}
                         onChange={e => this.handleInputChange(e)} />
                 </label>
-                <br />
                 <label>
                     <strong>Password:</strong> <br />
                     <input
@@ -47,7 +49,6 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
                         value={this.state.password}
                         onChange={e => this.handleInputChange(e)} />
                 </label>
-                <br />
                 <button>Login</button>
             </FormComponent>
         )
