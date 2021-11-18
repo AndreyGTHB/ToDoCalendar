@@ -13,7 +13,7 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
         username: "",
         password: ""
     }
-    state = JSON.parse(JSON.stringify(this.defaultState))
+    state: LoginFormState = JSON.parse(JSON.stringify(this.defaultState))
 
     handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const changed = FormService.processInputChange(event)
@@ -25,7 +25,7 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
     handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
-        console.log(new LoginUser(this.state.username, this.state.password))
+        console.log(LoginUser.fromMap(this.state))
         this.setState(JSON.parse(JSON.stringify(this.defaultState)))
     }
 

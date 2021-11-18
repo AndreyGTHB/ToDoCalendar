@@ -1,4 +1,4 @@
-import {ChangeEvent} from "react";
+import { ChangeEvent } from "react";
 
 export default class FormService {
     public static processInputChange(event: ChangeEvent<HTMLInputElement>): { [key: string]: string } {

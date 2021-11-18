@@ -49,4 +49,8 @@ export class LoginUser {
         this.username = username
         this.password = password
     }
+
+    public static fromMap({ username, password }: LoginUser): LoginUser {
+        return new LoginUser(username, password)
+    }
 }
