@@ -6,9 +6,8 @@ export default abstract class DataService<T> {
         this.data = data
     }
 
-    public setData(newData: T) {
-        this.data = newData
-        this.callbacks.forEach(cb => cb(this.data))
+    public changeData(changed: T) {
+        
     }
     public getData(): T { return this.data }
 
@@ -22,7 +21,7 @@ export default abstract class DataService<T> {
 
 
 class Subscription {
-    private callbackIndex
+    private readonly callbackIndex
     private callbacks
 
     constructor(cbs: ((_: any) => void)[], cbIndex: number) {
