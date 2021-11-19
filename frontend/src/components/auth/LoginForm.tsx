@@ -1,7 +1,8 @@
-import React, { ChangeEvent, FormEvent, ReactNode } from 'react'
-import { LoginUser } from '../../models/auth/user'
+import React, {ChangeEvent, FormEvent, ReactNode} from 'react'
+import {LoginUser} from '../../models/auth/user'
 import FormComponent from "../UI/Form";
 import FormService from "../../services/FormService";
+import serviceStore from "../../services/data/serviceStore";
 
 interface LoginFormState {
     username: string
@@ -14,6 +15,7 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
         password: ""
     }
     state: LoginFormState = JSON.parse(JSON.stringify(this.defaultState))
+    private userService = serviceStore.userService
 
     handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const changed = FormService.processInputChange(event)
@@ -25,8 +27,8 @@ export default class LoginForm extends React.Component<{}, LoginFormState> {
     handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
-        console.log(LoginUser.fromMap(this.state))
-        this.setState(JSON.parse(JSON.stringify(this.defaultState)))
+        const user = LoginUser.fromMap(this.state)
+        this.userService.user = user
     }
 
     render(): ReactNode {

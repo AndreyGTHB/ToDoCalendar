@@ -3,19 +3,14 @@ export class SafeUser {
     surname
     username
     email
-    accessToken
-    refreshToken
 
     constructor(firstname: string, surname: string, username: string,
                 email: string,
-                accessToken: string, refreshToken: string
     ) {
         this.firstname = firstname
         this.surname = surname
         this.username = username
         this.email = email
-        this.accessToken = accessToken
-        this.refreshToken = refreshToken
     }
 }
 

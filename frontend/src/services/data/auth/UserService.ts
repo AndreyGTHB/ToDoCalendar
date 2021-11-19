@@ -1,8 +1,7 @@
-import { SafeUser } from "../../../models/auth/user";
-import DataService from "../DataService";
+import {LoginUser} from "../../../models/auth/user";
 
-interface UserServiceData {
-    user: SafeUser
+
+export default class UserService {
+    public user: LoginUser | null = null
+    public authenticated: boolean = false
 }
-
-export default class UserService extends DataService<UserServiceData> {}
